@@ -1,7 +1,8 @@
 $(function() {
   //var graphiqlUrl = "http://localhost:9000/graphiql"
   var graphiqlUrl = "https://lucasconstantino.github.io/graphiql-online"
-  var graphiqlZoom = 140
+  var graphiqlZoom = 200
+  
 
   var showHideCredits = function (currentSlide) {
     var section = $(currentSlide)
