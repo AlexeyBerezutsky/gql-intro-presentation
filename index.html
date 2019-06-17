@@ -135,7 +135,7 @@
         </section>
 
         <section>
-          <h2>BE</h2>
+          <h2>Queries</h2>
           <img src="assets/img/GQL-be-nobg.png">
         </section>
 
@@ -245,43 +245,6 @@ query MyProduct {
         </section>
 
         <section>
-          <h2>Type System</h2>
-
-          <pre style="float: left; width: 60%"><code data-trim contenteditable class="javascript">
-type Picture {
-  width: Int!
-  height: Int!
-  url: String
-}
-          </code></pre>
-
-          <pre style="float: left; width: 40%" class="fragment fade-in"
-            data-fragment-index="3"><code data-trim contenteditable class="javascript">
-type Query {
-  product(id: Int!): Product
-  products: [Product]
-}
-          </code></pre>
-
-          <pre style="float: left; width: 60%" class="fragment fade-in"
-            data-fragment-index="1"><code data-trim contenteditable class="javascript">
-interface Identifiable {
-  id: String!
-}
-          </code></pre>
-
-          <pre style="float: left; width: 60%" class="fragment fade-in"
-            data-fragment-index="2"><code data-trim contenteditable class="javascript">
-type Product implements Identifiable {
-  id: String!
-  name: String!
-  description: String
-  picture(size: Int): Picture
-}
-          </code></pre>
-        </section>
-
-        <section>
           <h2>Mutations & Subscriptions</h2>
 
           <pre><code data-trim contenteditable class="javascript">
@@ -301,25 +264,57 @@ subscription ProductEvents {
 }
           </code></pre>
         </section>
+        <section>
+          <h2>Type System</h2>
 
+          <pre style="float: left; width: 60%"><code data-trim contenteditable class="javascript">
+  type Picture {
+    width: Int!
+    height: Int!
+    url: String
+  }
+            </code></pre>
+          <pre style="float: left; width: 40%" class="fragment fade-in"
+            data-fragment-index="3"><code data-trim contenteditable class="javascript">
+  type Query {
+    product(id: Int!): Product
+    products: [Product]
+  }
+            </code></pre>
+          <pre style="float: left; width: 60%" class="fragment fade-in"
+            data-fragment-index="1"><code data-trim contenteditable class="javascript">
+  interface Identifiable {
+    id: String!
+  }
+            </code></pre>
+          <pre style="float: left; width: 60%" class="fragment fade-in"
+            data-fragment-index="2"><code data-trim contenteditable class="javascript">
+  type Product implements Identifiable {
+    id: String!
+    name: String!
+    description: String
+    picture(size: Int): Picture
+  }
+            </code></pre>
+        </section>
         <section>
           <h2>Example: JavaScript</h2>
 
           <pre><code data-trim contenteditable class="javascript">
-  var ProductType = new GraphQLObjectType({
-    name: "Product",
-    description: "Commodity available for purchase",
-    fields: {
-      id: {type: GraphQLString},
-      onStock: {
-        type: GraphQLInt,
-        resolve(product) {
-          return product.onStock + 10;
+      var ProductType = new GraphQLObjectType({
+        name: "Product",
+        description: "Commodity available for purchase",
+        fields: {
+          id: {type: GraphQLString},
+          onStock: {
+            type: GraphQLInt,
+            resolve(product) {
+              return product.onStock + 10;
+            }
+          }
         }
-      }
-    }
-  });
-            </code></pre>
+      });
+                </code></pre>
         </section>
 
         <section>
@@ -355,8 +350,6 @@ subscription ProductEvents {
         <section>
           <img src="assets/img/data-requirements.svg">
         </section>
-
-
 
         <section>
           <h2>More features</h2>
@@ -416,7 +409,7 @@ subscription ProductEvents {
         </section>
 
         <section>
-          <h2>Why you should <span class="qvalue">NOT</span> use GraphQL</h2>
+          <h2>Why you do <span class="qvalue">NOT</span> use GraphQL</h2>
           <ul>
             <li class="fragment fade-in" data-fragment-index="1">REST already
               can do the same</li>
@@ -424,7 +417,7 @@ subscription ProductEvents {
               could grow in uncontrollable way</li>
             <li class="fragment fade-in" data-fragment-index="3">Learning curve</li>
             <li class="fragment fade-in" data-fragment-index="4">Web cache with
-              REST much understandable than GQL</li>
+              REST</li>
             <li class="fragment fade-in" data-fragment-index="4">Schemas are
               static</li>
           </ul>
@@ -436,15 +429,16 @@ subscription ProductEvents {
             <ul style="list-style: none;">
               <li>
                 <a href="https://graphql.org/code/#server-libraries"
-                  target="_blank">Server Libraries</a>
+                  target="_blank"><strong>Server Libraries</strong></a>
               </li>
               <li>
                 <a href="https://graphql.org/code/#graphql-clients"
-                  target="_blank">GraphQL Clients</a>
+                  target="_blank"><strong>GraphQL Clients</strong></a>
               </li>
             </ul>
           </div>
-          <div class="logos fragment fade-in" style="display: flex; justify-content: space-between;" data-fragment-index="1">
+          <div class="logos fragment fade-in" style="display: flex;
+            justify-content: space-between;" data-fragment-index="1">
             <div class="impl-logo"><a
                 href="https://github.com/graphql/graphql-js/"><img
                   src="assets/img/js-logo.svg"></a></div>
@@ -487,21 +481,30 @@ subscription ProductEvents {
             <div class="impl-logo"><a
                 href="https://github.com/graphql/libgraphqlparser"><img
                   src="assets/img/c-logo.svg"></a></div>
-            <div class="impl-logo"><a
-                href="https://github.com/graphql-dotnet/graphql-dotnet"><img
-                  src="assets/img/csharp-logo.png"></a></div>
           </div>
         </section>
-
 
         <section data-background="#000000" class="first-slide">
           <h1>Thank you!</h1>
           <br>
           <ul class="fragment roll-in" data-fragment-index="2">
             <li><strong>GraphQL:</strong> <a href="http://graphql.org"
-                target="_blank">http://graphql.org</a></li>
+                target="_blank">http://graphql.org</a>
+            </li>
             <li><strong>Zero To GraphQL:</strong> <a
-                href="http://bit.ly/zero-to-graphql" target="_blank">http://bit.ly/zero-to-graphql</a></li>
+                href="http://bit.ly/zero-to-graphql" target="_blank">http://bit.ly/zero-to-graphql</a>
+            </li>
+            <li><strong>Learn GraphQL:</strong> <a
+                href="https://www.howtographql.com/" target="_blank">https://www.howtographql.com</a>
+            </li>
+            <li><strong>Angular & Apollo - The Full-stack Guide:</strong> <a
+                href="https://coursehunters.net/course/graphql-c-angular-i-apollo-polnoe-full-stack-rukovodstvo"
+                target="_blank">https://coursehunters.net</a>
+            </li>
+            <li><strong>Taiwan Knowledge Bank:</strong> <a
+                href="https://github.com/chentsulin/awesome-graphql"
+                target="_blank">https://github.com/chentsulin/awesome-graphql</a>
+            </li>
           </ul>
           <br><br>
           <h2 class="fragment roll-in" data-fragment-index="3" style="opacity:
