@@ -68,6 +68,14 @@ Graphiql  - small application build on top of graphql.
 It’a absolutely generic and has no idea about api. It only knows one endpoint and it knows how to load types.  
 
 
+
+
+
+DEMODEMODEMODEMODEMODEMODEMODEMODEMODEMODEMODEMODEMODEMODEMODEMODEMODEMODEMODEMODEMODEMODEMODEMODEMODEMODEMODEMODEMODEMODEMODEMODEMODEMODEMO
+
+cd C:\repo\playGround\gql-intro-presentation\demo\hackernews-react-apollo/server => yarn start
+cd C:\repo\playGround\gql-intro-presentation\demo\hackernews-react-apollo => yarn start
+
 ===========================
 My server https://eu1.prisma.sh/alexey-berezutsky-7beaa6/DemoServer/dev
 
@@ -77,15 +85,6 @@ in case of emergency go here
 https://lucasconstantino.github.io/graphiql-online/
 ===========================
 
-{
-  feed {
-    links {
-      id
-      description
-      url
-    }
-  }
-}
 
 
 
@@ -135,17 +134,23 @@ fragment CommentFragment on Comment {
 
 Introspection
 You could go really deep in types 
+=======================================
 query {
 __schema{
-  types{
-    fields {
-      name
-    }
+  queryType{
+    name
+  }
+}
+__type(name: "User"){
+  fields{
+    name   
   }
 }
 }
-
+===========================================
 MUTATION
+
+==========================================
 mutation UpdateUserComment($id: ID!, $comment: String!) {
   updateUser(id: $id, comments: [{text:$comment}]) {
     id
@@ -160,7 +165,22 @@ mutation UpdateUserComment($id: ID!, $comment: String!) {
   "comment": "bla-bbla"
 }
 
-Subscriptions???
+
+==============================================
+
+
+
+
+
+For demo application 
+https://www.howtographql.com/react-apollo/4-routing/
+
+
+
+
+
+
+
 
 
 http://127.0.0.1:8080/#/14
