@@ -68,9 +68,29 @@ Graphiql  - small application build on top of graphql.
 It’a absolutely generic and has no idea about api. It only knows one endpoint and it knows how to load types.  
 
 
+===========================
+My server https://eu1.prisma.sh/alexey-berezutsky-7beaa6/DemoServer/dev
+
+BIG SCHEMA   https://api.graph.cool/simple/v1/ciyz901en4j590185wkmexyex
+in case of emergency go here
+
+https://lucasconstantino.github.io/graphiql-online/
+===========================
+
+{
+  feed {
+    links {
+      id
+      description
+      url
+    }
+  }
+}
+
+
 
 Example of fragments 
-
+==============================
 query {
   allUsers{
    ...Foo
@@ -82,8 +102,11 @@ query {
 fragment Foo on Node {
   id
 }
+===================================
+
+
 If you have tons of components each component will be exposed like …Fragment1 …fragment2 etc
-query {
+=====================================
 query {
   allUsers{
     
@@ -106,17 +129,21 @@ fragment CommentFragment on Comment {
   id
   text
 }
+
+=========
+
+
 Introspection
 You could go really deep in types 
 query {
-_schema {
-queryType {
-} }
-  __type(name: "User"){
-    fields{
+__schema{
+  types{
+    fields {
       name
     }
   }
+}
+}
 
 MUTATION
 mutation UpdateUserComment($id: ID!, $comment: String!) {

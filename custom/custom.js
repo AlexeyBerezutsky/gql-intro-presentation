@@ -1,8 +1,12 @@
-$(function() {
-  //var graphiqlUrl = "http://localhost:9000/graphiql"
+$(function () {
+  //var graphiqlUrl = "http://localhost:4000"
+  //var graphiqlUrl = "https://eu1.prisma.sh/alexey-berezutsky-7beaa6/DemoServer/dev"
+
   var graphiqlUrl = "https://lucasconstantino.github.io/graphiql-online"
+
+
   var graphiqlZoom = 200
-  
+
 
   var showHideCredits = function (currentSlide) {
     var section = $(currentSlide)
@@ -31,11 +35,11 @@ $(function() {
     }
   }
 
-  Reveal.addEventListener( 'slidechanged', function( event ) {
+  Reveal.addEventListener('slidechanged', function (event) {
     showHideCredits(event.currentSlide)
   });
 
-  Reveal.addEventListener( 'ready', function( event ) {
+  Reveal.addEventListener('ready', function (event) {
     showHideCredits(event.currentSlide)
   });
 
@@ -43,7 +47,7 @@ $(function() {
     selector.map(function (idx, elem) {
       var replaceElem = $(elem).parent().get(0)
       var vars = $(elem).data("vars")
-      var varsParam = vars ? "variables=" +encodeURIComponent(vars) : "hideVariables=true"
+      var varsParam = vars ? "variables=" + encodeURIComponent(vars) : "hideVariables=true"
       var queryAndResp = $(elem).text().trim().split("// Response")
       var query = queryAndResp[0].trim()
       var resp = queryAndResp[1].trim()
