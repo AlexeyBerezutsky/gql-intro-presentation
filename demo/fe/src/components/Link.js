@@ -20,12 +20,13 @@ const VOTE_MUTATION = gql`
         id
       }
     }
-  }`
-
+  }
+`
 
 class Link extends Component {
   render() {
     const authToken = localStorage.getItem(AUTH_TOKEN)
+
     return (
       <div className="flex mt2 items-start">
         <div className="flex items-center">
@@ -36,11 +37,12 @@ class Link extends Component {
               variables={{ linkId: this.props.link.id }}
               update={(store, { data: { vote } }) =>
                 this.props.updateStoreAfterVote(store, vote, this.props.link.id)
-              }>
+              }
+            >
               {voteMutation => (
                 <div className="ml1 gray f11" onClick={voteMutation}>
                   ▲
-             </div>
+                </div>
               )}
             </Mutation>
           )}
