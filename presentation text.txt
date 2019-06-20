@@ -35,20 +35,18 @@ And peoples have to create different endpoints for different clients. => all end
 
 http://127.0.0.1:8080/#/4
 QGL approach 
-It’s the same process: client asks for data from BE but with small difference. Client defines what exact data it wants to receive.   
-How companies are reaching it? 
-1.	Your company should have one unified graph, instead of multiple graphs created by each team
-2.	There should be a single source of truth for registering and tracking the graph.
-
-
-http://127.0.0.1:8080/#/6
-GraphQL BE
-Graph ql be should follow some protocol/rules which are defined by specification.
+BE not a set of endpoint => only on eendpoint
+BE provide whole data as graph. => no need to save business logic into FE
+BE provides Documentation
+BE provides type system
+FE ask ony what iat actually need
 
 
 
-http://127.0.0.1:8080/#/10
+
+http://127.0.0.1:8080/#/11
 Type system
+
 Big advantage of GQL responses that they are type save. 
 It very familiar to typescript and it’s easy to integrate to TS.
 Great feature that type system is exposed to outside from API and all your clients will be typed. 
@@ -58,12 +56,8 @@ GQL has interfaces, unions, enums.
 Graphql trying to represent your system like a graph. Graph has no start and end. It has nodes that are connected somehow. And you have to traverse your graph from some point. 
 And graphQL has suggested start points: QUERY MUTATION SUBSCRIPTIONS.  May be in some situation you could think about them like about root types.
 
-http://127.0.0.1:8080/#/11
-Mutations: 
-Interesting!  all mutations will be executed in the order of definition
 
-
-http://127.0.0.1:8080/#/12
+http://127.0.0.1:8080/#/13
 Graphiql  - small application build on top of graphql. 
 It’a absolutely generic and has no idea about api. It only knows one endpoint and it knows how to load types.  
 
@@ -130,6 +124,22 @@ fragment CommentFragment on Comment {
 }
 
 =========
+Directives
+
+query Users($addComments: Boolean!){
+  allUsers {
+    id
+    comments @include(if: $addComments){
+      text
+    }
+  }
+}
+
+{
+    "addComments": true
+}
+=========
+
 
 
 Introspection
@@ -189,17 +199,15 @@ So. On FE you have all types, all handlers to change data, schemas, documentatio
 GQL do not care about all your technologies on BE and simply resolves what FE is needed
 Transport: client defines transport. For instance client could set WS or set TCP connection and send binaries.  And you steel use graphql.
 
-http://127.0.0.1:8080/#/15
-As result: BE shows possibilities to client
-Client asks BE about what it needs 
 
-http://127.0.0.1:8080/#/16
+
+http://127.0.0.1:8080/#/15
 More features
 Deferred values. N+1Problem. Entity1 connected to Entity2. an d you have to create two  quaries. Instead of that you could wait untill GQL 
 quary on BE for all inforamtion and will return you whole information that you need 
-Projecitons. Help to build efficient DB projeciotns. Query is already source of projeciton.
-Middleware. There are tons of libraries  that allows to handle queries, interupt them, intro
-Query resucers. Endpoint allows to abuse properties of query and use it in non correct way. Reducers on BE allows to analyse query before it actually run 
+
+Query resucers. Endpoint allows to abuse properties of query and use it in non correct way. 
+!!!!Reducers on BE allows to analyse query before it actually run 
 and  decrease complexity of it to single value (for instance)
 You could set a treshold on complexity of a quary. For instance depth. 
 
@@ -211,7 +219,7 @@ Different kind of clients - mobile, services, desktops
 Hide complexity from clients (microservices) - you could have extremely complex BE but client will never know about it. 
 Slow network with big lattency and interruptions - GraphQl shrinks data in responses, libraries support different transport and caches => all this could work in case of bad network
 
-http://localhost:8080/#/19
+http://localhost:8080/#/18
 Why you do NOT use GraphQL
 REST already can do the same - if you want to have filtered set of properties use fields. Yes it's a custom solution, but solution. In many cases it's enought.
 If you need static typization => use JSON schemas
